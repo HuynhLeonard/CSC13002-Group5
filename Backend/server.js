@@ -11,6 +11,16 @@ process.on("uncaughtException", (err) => {
 })
 connectDatabase();
 
-app.listen(process.env.PORT, () => {
+const server = app.listen(process.env.PORT, () => {
     console.log("Server is running");
 });
+
+process.on("unhandledRejection", (err) => {
+    console.log('Shutting down the server.');
+    console.log('Shutting down the server for unhandle promise rejection');
+
+    server.close(() => {
+        process.exit(1);
+    });
+});
+
