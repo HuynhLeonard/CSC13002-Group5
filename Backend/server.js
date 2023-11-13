@@ -1,7 +1,7 @@
 // const express = require('express');
 // const app = express();
 const app = require('./app.js')
-const connectDatabase = require("./db/connectDb.js");
+const connectDatabase = require("./db/connectDB.js");
 require('dotenv').config();
 
 // Handling exception
