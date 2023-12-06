@@ -5,8 +5,9 @@ const cookieParser = require('cookie-parser');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const userRoute = require("./controller/userControllers.js");
-const shopRoute = require("./controller/shopController.js");
-const product = require("./controller/productController.js");
+const shopRoute = require("./controller/shopControllers.js");
+const productRoute = require("./controller/productControllers.js");
+const eventRoute = require("./controller/eventControllers.js");
 
 const corsOptions = {
     origin: "http://localhost:3000",
@@ -23,8 +24,8 @@ app.use(bodyParser.urlencoded({extended:true,limit:"50mb"}));
 
 app.use("/api/user", userRoute);
 app.use("/api/shop", shopRoute);
-app.use("/api/product", product);
-
+app.use("/api/product", productRoute);
+app.use("/api/event", eventRoute);
 app.use(ErrorHandler);
 
 module.exports = app;
