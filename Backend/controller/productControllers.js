@@ -1,11 +1,11 @@
 const express = require('express');
 const {isSeller} = require('../middleware/auth.js');
-const catchAsyncErrors = require("../middleware/catchAsyncErrors");
+const catchAsyncErrors = require("../middleware/catchAsyncErrors.js");
 const router = express.Router();
 const Product = require("../model/Product.js");
 const Shop = require("../model/Shop.js");
-const { upload } = require("../multer");
-const ErrorHandler = require("../utils/ErrorHandler");
+const { upload } = require("../multer.js");
+const ErrorHandler = require("../utils/ErrorHandler.js");
 const fs = require("fs");
 
 router.post('/create-product', upload.array("images"), catchAsyncErrors(async (req,res,next) => {
