@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { RxAvatar } from "react-icons/rx";
+import "../Css/Shop-regis.css";
 
 const ShopCreate = () => {
   const navigate = useNavigate();

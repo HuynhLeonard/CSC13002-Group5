@@ -39,6 +39,8 @@ body {
   border-radius: 50px;
 
   position: relative;
+  bottom: 0.5rem;
+
   z-index: 10;
   overflow: hidden;
 
@@ -111,7 +113,7 @@ input {
   background-color: gainsboro;
 }
 
-.email, .password, .name {
+.email, .password, .name, .phone-number, .address, .code {
   position: relative;
   margin-bottom: 30px;
   width: 100%;
@@ -127,23 +129,23 @@ input {
   transition: 0.5s;
 }
 
-.email:hover, .password:hover, .name:hover, .file:hover {
+.email:hover, .password:hover, .name:hover, .file:hover, .phone-number:hover, .address:hover, .code:hover {
   top: -5px;
   box-shadow: 0px 0px 20px 5px rgba(0,51,102,0.3);
   color: #ff9966;
 }
 
-.email input, .password input, .name input {
+.email input, .password input, .name input, .phone-number input, .address input, .code input {
   outline: none;
   border: none;
 }
 
-.name i, .email i, .password i {
+.name i, .email i, .password i, .phone-number i, .address i, .code i {
   font-size: 25px;
   line-height: 59.2px;
 }
 
-.email span, .password span, .name span {
+.email span, .password span, .name span, .phone-number span, .address span, .code span {
   position: absolute;
   left: 0;
 
