@@ -5,6 +5,7 @@ import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import { toast } from "react-toastify";
 import { RxAvatar } from "react-icons/rx";
+import "../Css/Shop-regis.css";
 
 const ShopCreate = () => {
   const navigate = useNavigate();
@@ -73,6 +74,7 @@ const ShopCreate = () => {
               <input
                 type="text"
                 name="name"
+                autoComplete="off"
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
@@ -156,13 +158,6 @@ const ShopCreate = () => {
             </div>
 
             <div className="file">
-              <span>
-                {avatar ? (
-                  <img src={URL.createObjectURL(avatar)} alt="avatar" />
-                ) : (
-                  <RxAvatar />
-                )}
-              </span>
               <input
                 type="file"
                 name="avatar"
@@ -179,7 +174,7 @@ const ShopCreate = () => {
 
           <div className="sign-up">
             Already have an count?
-            <Link to="/shop-login">Sign in</Link>
+            <Link to="/shop-login"> Sign in</Link>
           </div>
         </div>
       </div>
