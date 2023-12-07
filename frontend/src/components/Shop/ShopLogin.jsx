@@ -95,7 +95,7 @@ const ShopLogin = () => {
           <div className="sign-up">
             <h4>Not have any account?</h4>
             <Link to="/shop-create" className="text-blue-600 pl-2">
-              Sign Up
+              Sign up
             </Link>
           </div>
         </div>

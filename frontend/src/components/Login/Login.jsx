@@ -94,9 +94,7 @@ const Login = () => {
           </form>
           <div className="sign-up">
             <h4>Not have any account?</h4>
-            <Link to="/sign-up" className="text-blue-600 pl-2">
-              Sign Up
-            </Link>
+            <Link to="/sign-up"> Sign up</Link>
           </div>
         </div>
       </div>
