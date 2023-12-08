@@ -55,10 +55,10 @@ const Header = ({ activeHeading }) => {
   });
 
   return (
-    <div className="body">
-      <div className="searching">
-        <div className="logo"></div>
-        <div className="search_bar">
+    <div className="header_body">
+      <div className="header_searching">
+        <div className="header_logo"></div>
+        <div className="header_search_bar">
           <input
             type="text"
             placeholder="Search Products..."
@@ -88,16 +88,16 @@ const Header = ({ activeHeading }) => {
           ) : null}
           <i class="bx bx-search-alt-2"></i>
         </div>
-        <div className="become_btn">
+        <div className="header_become_btn">
           <Link to="/shop-create">
             <h1>Become Seller</h1>
           </Link>
         </div>
       </div>
 
-      <div className="header">
-        <div className="category">
-          <div className="dropdown_select"></div>
+      <div className="header_header">
+        <div className="header_category">
+          <div className="header_dropdown_select"></div>
         </div>
       </div>
     </div>

@@ -1,4 +1,4 @@
-.searching {
+.header_searching {
     height: 100px;
   
     display: flex;
@@ -22,7 +22,7 @@
     }
   }
     
-    .logo {
+.header_logo {
       margin-left: 60px;
   
       width: 20%;
@@ -36,7 +36,7 @@
       text-align: center;
     }
   
-    .search_bar {
+.header_search_bar {
       display: flex;
       justify-content: right;
       
@@ -49,7 +49,7 @@
       border-radius: 40px;
     }
   
-    .search_bar input {
+    .header_search_bar input {
       width: 90%;
   
       outline: none;
@@ -62,19 +62,19 @@
       background-color: transparent;
     }
   
-    .search_bar:hover {
+    .header_search_bar:hover {
       color:#ff9966;
       border: 2px solid #003366;
     }
   
-    .search_bar i {
+    .header_search_bar i {
       width: 10%;
   
       line-height: 53.2px;
       text-align: center;
     }
   
-    .become_btn {
+    .header_become_btn {
       display: flex;
       justify-content: center;
       align-items: center;
@@ -84,7 +84,7 @@
       font-family: "Agbalumo";
     }
   
-    .become_btn a {
+    .header_become_btn a {
       display: inline-block;
       line-height: 50px;
   
@@ -101,7 +101,7 @@
       border-radius: 20px;
     }
   
-    .become_btn a:hover {
+    .header_become_btn a:hover {
       color: #003366;
       background-color: #ff9966;
       box-shadow: 0 0 10px #ff9966, 0 0 40px #ff9966, 0 0 10px #ff9966;
@@ -109,30 +109,30 @@
     }
   
     @media only screen and (max-width: 768px) {
-    .logo {
+      .header_logo {
       width: 30%;
       margin: 0;
     }
   
-    .search_bar {
+    .header_search_bar {
       width: 35%;
       font-size: 15px;
     }
     
-    .search_bar i {
+    .header_search_bar i {
       width: 40%;
     }
   
-    .search_bar input {
+    .header_search_bar input {
       width: 30%;
       font-size: 10px;
     }
   
-    .become_btn {
+    .header_become_btn {
       width: 20%;
     }
   
-    .become_btn a {
+    .header_become_btn a {
       width: 90%;
       font-size: 10px;
       line-height: 50px;
@@ -140,7 +140,7 @@
     }
   }
   
-  .header {
+  .header_header {
     width: 100%;
     height: 100px;
   
@@ -148,16 +148,16 @@
     position: relative;
   }
   
-  .category {
+  .header_category {
     width: 30%;
     padding: 5px 20px;
   }
   
-  .dropdown_select:hover, .dropdown_item:hover {
+  .header_dropdown_select:hover, .dropdown_item:hover {
     color: #003366;
   }
   
-  .dropdown_select {
+  .header_dropdown_select {
     display: flex;
     justify-content: space-between;
   
@@ -180,12 +180,12 @@
     color: white;
   }
   
-  .dropdown_select span {
+  .header_dropdown_select span {
     position: relative;
     top: -6px;
   }
   
-  .dropdown_list {
+  .header_dropdown_list {
     width: 67%;
     height: 30%;
   
@@ -209,11 +209,11 @@
     display: none;
   }
   
-  .category:hover .dropdown_list {
+  .header_category:hover .dropdown_list {
     display: block;
   }
   
-  .dropdown_list::before {
+  .header_dropdown_list::before {
     content: "";
     
     position: absolute;
@@ -227,7 +227,7 @@
     transform: translateY(-180%);
   }
   
-  .dropdown_item {
+  .header_dropdown_item {
     display: flex;
     justify-content: space-between;
   
@@ -236,24 +236,24 @@
     cursor: pointer;
   }
   
-  .dropdown_item:hover {
+  .header_dropdown_item:hover {
     background-color: #e0875a;
   }
   
-  .dropdown_item:first-child:hover {
+  .header_dropdown_item:first-child:hover {
     border-radius: 10px 10px 0 0;
   }
   
-  .dropdown_item:last-child:hover {
+  .header_dropdown_item:last-child:hover {
     border-radius: 0 0 10px 10px;
   }
   
-  .dropdown_item span {
+  .header_dropdown_item span {
     position: relative;
     top: -6px;
   }
   
-  .nav {
+  .header_nav {
     width: 40%;
   
     position: absolute;
@@ -265,7 +265,7 @@
     border-radius: 10px;
   }
   
-  .nav a {
+  .header_nav a {
     font-family: "Agbalumo";
     font-size: 20px;
     color: white;
@@ -278,37 +278,37 @@
     z-index: 1;
   }
   
-  .nav a:nth-child(1) {
+  .header_nav a:nth-child(1) {
     display: inline-block;
     width: 80px;
     text-align: center;
   }
   
-  .nav a:nth-child(2) {
+  .header_nav a:nth-child(2) {
     display: inline-block;
     width: 130px;
     text-align: center;
   }
   
-  .nav a:nth-child(3) {
+  .header_nav a:nth-child(3) {
     display: inline-block;
     width: 110px;
     text-align: center;
   }
   
-  .nav a:nth-child(4) {
+  .header_nav a:nth-child(4) {
     display: inline-block;
     width: 90px;
     text-align: center;
   }
   
-  .nav a:nth-child(5) {
+  .header_nav a:nth-child(5) {
     display: inline-block;
     width: 75px;
     text-align: center;
   }
   
-  .nav .animation {
+  .header_nav .animation {
     position: absolute;
     height: 100%;
     top: 0;
@@ -319,32 +319,32 @@
     transition: all 0.5s ease 0s;
   }
   
-  .nav .start_home, a:nth-child(1):hover~.animation {
+  .header_nav .start_home, a:nth-child(1):hover~.animation {
     width: 100px;
     left: 0;
   }
   
-  .nav .start_best  , a:nth-child(2):hover~.animation {
+  .header_nav .start_best  , a:nth-child(2):hover~.animation {
     width: 150px;
     left: 104px;
   }
   
-  .nav .start_product, a:nth-child(3):hover~.animation {
+  .header_nav .start_product, a:nth-child(3):hover~.animation {
     width: 130px;
     left: 258px;
   }
   
-  .nav .start_event, a:nth-child(4):hover~.animation {
+  .header_nav .start_event, a:nth-child(4):hover~.animation {
     width: 110px;
     left: 392px;
   }
   
-  .nav .start_faq, a:nth-child(5):hover~.animation {
+  .header_nav .start_faq, a:nth-child(5):hover~.animation {
     width: 102px;
     left: 506px;
   }
   
-  .icon {
+  .header_icon {
     position: absolute;
     left: 1250px;
     top: 30px;
@@ -353,42 +353,42 @@
     font-size: 35px;
   }
   
-  .icon i {
+  .header_icon i {
     position: relative;
     padding: 0 15px;
   }
   
-  .icon i:hover {
+  .header_icon i:hover {
     color:#ff9966;
     top: -5px;
     cursor: pointer;
   }
   
   @media only screen and (max-width: 768px) {
-    .category {
+    .header_category {
       width: 30%;
       padding: 2px 10px;
     }
   
-    .dropdown_select {
+    .header_dropdown_select {
       font-size: 10px;
       padding: 5px;
       top: 20px;
     }
   
-    .dropdown_select span {
+    .header_dropdown_select span {
       top: -4px;
     }
   
-    .dropdown_list {
+    .header_dropdown_list {
       font-size: 7px;
     }
   
-    .dropdown_item {
+    .header_dropdown_item {
       padding: 6px 3px;
     }
   
-    .dropdown_list::before {
+    .header_dropdown_list::before {
       top: 5px;
       left: 75px;
     
@@ -397,7 +397,7 @@
       border-bottom: 6px solid #ff9966;
     }
   
-    .nav {
+    .header_nav {
       width: 48%;
       height: 20%;
     
@@ -405,28 +405,28 @@
       top: 25px;
     }
   
-    .nav a {
+    .header_nav a {
       font-size: 8px;
       padding: 0 2px;
     }
   
-    .nav a:nth-child(1) {
+    .header_nav a:nth-child(1) {
       width: 36px;
     }
     
-    .nav a:nth-child(2) {
+    .header_nav a:nth-child(2) {
       width: 50px;
     }
     
-    .nav a:nth-child(3) {
+    .header_nav a:nth-child(3) {
       width: 40px;
     }
     
-    .nav a:nth-child(4) {
+    .header_nav a:nth-child(4) {
       width: 40px;
     }
     
-    .nav a:nth-child(5) {
+    .header_nav a:nth-child(5) {
       width: 30px;
   
       position: relative;
@@ -434,47 +434,47 @@
     }
   
     
-    .nav .animation {
+    .header_nav .animation {
       width: 40px;
     }
     
-    .nav .start_home, a:nth-child(1):hover~.animation {
+    .header_nav .start_home, a:nth-child(1):hover~.animation {
       width: 40px;
       left: 0;
     }
     
-    .nav .start_best  , a:nth-child(2):hover~.animation {
+    .header_nav .start_best  , a:nth-child(2):hover~.animation {
       width: 50px;
       left: 46px;
     }
     
-    .nav .start_product, a:nth-child(3):hover~.animation {
+    .header_nav .start_product, a:nth-child(3):hover~.animation {
       width: 40px;
       left: 103px;
     }
     
-    .nav .start_event, a:nth-child(4):hover~.animation {
+    .header_nav .start_event, a:nth-child(4):hover~.animation {
       width: 40px;
       left: 152px;
     }
     
-    .nav .start_faq, a:nth-child(5):hover~.animation {
+    .header_nav .start_faq, a:nth-child(5):hover~.animation {
       width: 30px;
       left: 202px;
     }
   
-    .icon {
+    .header_icon {
       left: 400px;
       top: 28px;
     
       font-size: 15px;
     }
     
-    .icon i {
+    .header_icon i {
       padding: 0 5px;
     }
     
-    .icon i:hover {
+    .header_icon i:hover {
       color:#ff9966;
       top: -5px;
       cursor: pointer;

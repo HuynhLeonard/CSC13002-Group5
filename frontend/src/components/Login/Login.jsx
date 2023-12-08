@@ -4,7 +4,7 @@ import { useNavigate, Link } from "react-router-dom";
 // import {server} from "../../server";
 import axios from "axios";
 import { toast } from "react-toastify";
-import "../Css/Login.css";
+import style from "../Css/Login.css";
 
 const Login = () => {
   const navigate = useNavigate();
