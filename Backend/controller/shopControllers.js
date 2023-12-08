@@ -12,7 +12,7 @@ const ErrorHandler = require("../utils/ErrorHandler.js");
 const sendShopToken = require("../utils/shopToken.js");
 
 const Shop = require("../model/Shop.js");
-const Product = require("../model/Product.js");
+const Product = require("../model/product.js");
 
 router.post("/create-shop", upload.single("file"), async (req, res, next) => {
     try {
