@@ -1,0 +1,375 @@
+@keyframes fade-in {
+  from {
+    background-color: rgba(#000, 0.25);
+    opacity: 0;
+    transform: translateY(50vh);
+  }
+  to {
+    background-color: rgba(#000, 0);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.body {
+  height: 100%;
+  margin: 0;
+  padding: 20px 0;
+
+  background: white;
+  background-image: url(../img/background_1.png);
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: cover;
+
+  animation: fade-in 2s forwards;
+}
+
+.wrapper {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+
+  width: 540px;
+  height: auto;
+  
+  margin: 120px auto;
+
+  border: none;
+  box-shadow: 0px 0px 35px 0px rgba(0,51,102,0.75);
+  border-radius: 50px;
+
+  position: relative;
+  z-index: 10;
+  overflow: hidden;
+
+  background: rgba(220, 220, 220, .2);
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  width: 85%;
+  height: 100%;
+
+  position: relative;
+  z-index: 10;
+
+  padding: 30px;
+}
+
+@keyframes slide {
+  0% {
+    background: url(../img/shop-logo.png);
+    background-repeat: no-repeat;
+  }
+  50% {
+    background: url(../img/team-logo.png);
+    background-repeat: no-repeat;
+  }
+  100% {
+    background: url(../img/shop-logo.png);
+    background-repeat: no-repeat;
+  }
+}
+
+.logo {
+  width: 35%;
+
+  background: url(../img/team-logo.png);
+  background-repeat: no-repeat;
+  
+  animation: slide 3s infinite;
+
+  text-align: center;
+}
+
+.title {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 30px;
+
+  width: 100%;
+}
+
+.title h1 {
+  padding: 0;
+  margin: 0;
+
+  line-height: 99.95px;
+
+  font-family: "Agbalumo";
+  font-size: 38px;
+  font-weight: bold;
+}
+
+input {
+  width: 350px;
+  padding: 20px;
+
+  text-align: center;
+  
+  border-radius: 20px;
+
+  background-color: gainsboro;
+}
+
+.email, .password {
+  position: relative;
+  margin-bottom: 30px;
+  width: 400px;
+
+  border: 1px solid black;
+  border-radius: 20px;
+
+  display: flex;
+  justify-content: center;
+
+  background-color: gainsboro;
+
+  transition: 0.5s;
+}
+
+.email:hover, .password:hover {
+  top: -5px;
+  box-shadow: 0px 0px 20px 5px rgba(0,51,102,0.3);
+  color: #ff9966;
+}
+
+.email input, .password input {
+  outline: none;
+  border: none
+}
+
+.password input {
+  width: 325px;
+}
+
+.email i, .password i {
+  font-size: 25px;
+  line-height: 59.2px;
+}
+
+.email span, .password span {
+  position: absolute;
+  left: 0;
+
+  width: 100%;
+  line-height: 59.2px;
+  text-align: center;
+  pointer-events: none;
+  
+  font-size: 1em;
+  color: rgba(0, 0, 0, 0.2);
+  text-transform: uppercase;
+
+  font-family: "Montserrat";
+}
+
+.content input:valid ~ span, .content input:focus ~ span {
+  display: inline-block;
+
+  width: auto; 
+  height: 10px;
+
+  color: #003366;
+  
+  font-size: 0.8em;
+  font-family: "Montserrat";
+  font-weight: bold;
+
+  transform: translateX(30px) translateY(-38px);
+  transition: 0.5s;
+}
+
+.wrapper::before {
+  content: '';
+  position: absolute;
+  width: 300px;
+  height: 180%;
+  background: linear-gradient(OrangeRed, rgb(8, 8, 248));
+  animation: border 5s ease-in-out infinite;
+}
+
+.wrapper::after {
+  content: '';
+  position: absolute;
+  background: ghostwhite;
+  inset: 8px;
+  border-radius: 50px;
+}
+
+@keyframes border {
+  0% {
+    transform: rotate(0deg);
+  }
+  100%
+  {
+    transform: rotate(360deg);
+  }
+}
+
+form {
+  width: 100%;
+}
+
+input[type=checkbox] {
+  width: auto;
+  margin-right: 5px;
+}
+
+.remember label:hover, .forgot a:hover {
+  font-weight: bold;
+}
+
+.forgot a {
+  color: blue;
+}
+
+.forgot a:visited {
+  color: blue;
+}
+
+.function {
+  display: flex;
+  justify-content: space-between;
+  font-family: "Montserrat";
+}
+
+.remember {
+  display: flex;
+}
+
+input[type=submit] {
+  width: 100%;
+  margin: 30px 0;
+  
+  font-family: "Montserrat";
+  font-size: 20px;
+  
+  background: gainsboro;
+  border: none;
+
+  position: relative;
+
+  overflow: hidden;
+  transition: 0.5s;
+}
+
+input[type=submit]:hover {
+  font-weight: bold;
+  color: #003366;
+  background: #ff9966;
+  
+  box-shadow: 0 0 10px #ff9966;
+  cursor: pointer;
+
+  position: relative;
+
+  margin-left: 100px;
+  margin-right: 100px;
+}
+
+.submit {
+  display: flex;
+}
+
+.sign-up {
+  font-family: "Montserrat";
+}
+
+.sign-up h4 {
+  font-weight: bold;
+  font-size: 18px;
+  display: inline;
+}
+
+.eye {
+  margin-top: 18px;
+}
+
+@media only screen and (max-width: 768px) {
+  .wrapper {
+    width: 350px;
+    height: auto;
+
+    margin: 20px auto;
+  }
+
+  .email, .password {
+    width: 300px;
+  }
+
+  .function {
+    position: relative;
+    width: 300px;
+    font-size: 13px;
+    justify-content: space-between;
+  }
+
+  .content {
+    width: 90%;
+  }
+
+  .title {
+    width: 100%;
+  }
+
+  .title h1 {
+    font-size: 24px;
+    padding: 0;
+    margin: 0;
+    text-align: center;
+  }
+
+  .logo {
+    width: 50%;
+  }
+
+  form {
+    width: 300px;
+  }
+
+  .sign-up {
+    font-size: 15px;
+  }
+
+  .sign-up h4 {
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .email i, .password i {
+    padding-left: 5px;
+  }
+
+  .email input, .password input {
+    width: 250px;
+  }
+
+  .password input {
+    width: 225px;
+  }
+
+  .remember {
+    display: flex;
+  }
+
+  input[type=submit]:hover {
+    font-weight: bold;
+    color: #003366;
+    background: #ff9966;
+    
+    box-shadow: 0 0 10px #ff9966;
+    cursor: pointer;
+  
+    position: relative;
+  
+    margin-left: 80px;
+    margin-right: 80px;
+  }
+}
