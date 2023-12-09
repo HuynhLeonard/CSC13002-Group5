@@ -292,6 +292,10 @@
   }
   
   @media only screen and (max-width: 768px) {
+    .shop-log-body {
+      padding: 50px 0;
+    }
+
     .shop-log-wrapper {
       width: 350px;
       height: auto;
@@ -347,11 +351,11 @@
     }
   
     .shop-log-email input, .shop-log-password input {
-      width: 250px;
+      width: 250px !important;
     }
   
     .shop-log-password input {
-      width: 225px;
+      width: 225px !important;
     }
   
     .shop-log-remember {

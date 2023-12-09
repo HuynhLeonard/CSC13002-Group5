@@ -11,7 +11,7 @@
   }
 }
 
-.body {
+.user-reg-body {
     height: 100%;
     margin: 0;
     padding: 20px 0;
@@ -21,11 +21,9 @@
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-
-    animation: fade-in 2s forwards;
   }
   
-  .wrapper {
+  .user-reg-wrapper {
     display: flex;
     justify-content: space-around;
     align-items: center;
@@ -44,9 +42,10 @@
     overflow: hidden;
   
     background: rgba(220, 220, 220, .2);
+    animation: fade-in 2s forwards;
   }
 
-  .content {
+  .user-reg-content {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -76,7 +75,7 @@
     }
   }
   
-  .logo {
+  .user-reg-logo {
     width: 30%;
   
     background: url(../img/team-logo.png);
@@ -87,7 +86,7 @@
     text-align: center;
   }
   
-  .title {
+  .user-reg-title {
     width: 100%;
 
     display: flex;
@@ -96,7 +95,7 @@
     margin-bottom: 30px;
   }
   
-  .title h1 {
+  .user-reg-title h1 {
     padding: 0;
     margin: 0;
 
@@ -107,7 +106,7 @@
     line-height: 97.62px;
   }
   
-  input {
+  .user-reg-content form input {
     width: 70%;
     padding: 20px;
   
@@ -118,7 +117,7 @@
     background-color: gainsboro;
   }
   
-  .email, .password, .name {
+  .user-reg-email, .user-reg-password, .user-reg-name {
     position: relative;
     margin-bottom: 30px;
     width: 100%;
@@ -134,23 +133,23 @@
     transition: 0.5s;
   }
   
-  .email:hover, .password:hover, .name:hover, .file:hover {
+  .user-reg-email:hover, .user-reg-password:hover, .user-reg-name:hover, .user-reg-file:hover {
     top: -5px;
     box-shadow: 0px 0px 20px 5px rgba(0,51,102,0.3);
     color: #ff9966;
   }
   
-  .email input, .password input, .name input {
+  .user-reg-email input, .user-reg-password input, .user-reg-name input {
     outline: none;
     border: none;
   }
   
-  .name i, .email i, .password i {
+  .user-reg-name i, .user-reg-email i, .user-reg-password i {
     font-size: 25px;
     line-height: 59.2px;
   }
   
-  .email span, .password span, .name span {
+  .user-reg-email span, .user-reg-password span, .user-reg-name span {
     position: absolute;
     left: 0;
   
@@ -166,7 +165,7 @@
     font-family: "Montserrat";
   }
   
-  .content input:valid ~ span, .content input:focus ~ span {
+  .user-reg-content input:valid ~ span, .user-reg-content input:focus ~ span {
     display: inline-block;
     width: auto; 
     height: 10px;
@@ -180,10 +179,10 @@
     transition: 0.5s;
   }
   
-  .file {
+  .user-reg-file {
     position: relative;
     width: 100%;
-    height: 60.8px;
+    height: 100%;
 
     font-size: 1em;
     font-family: "Montserrat";
@@ -196,9 +195,18 @@
     transition: 0.5s;
   }
 
-  .file input {
-    width: 80%;
+  .user-reg-password input {
+    width: 245px !important;
+  }
+
+  .user-reg-file input {
+    width: 100% !important;
     padding: 10px 25px;
+    font-size: 14px;
+  }
+
+  .user-reg-eye {
+    margin-top: 18px;
   }
 
   ::-webkit-file-upload-button {
@@ -221,7 +229,7 @@
     border: 1px solid black;
   }
 
-  .wrapper::before {
+  .user-reg-wrapper::before {
     content: '';
     position: absolute;
     width: 300px;
@@ -230,7 +238,7 @@
     animation: border 5s ease-in-out infinite;
   }
   
-  .wrapper::after {
+  .user-reg-wrapper::after {
     content: '';
     position: absolute;
     background: ghostwhite;
@@ -248,11 +256,11 @@
     }
   }
   
-  form {
+  .user-reg-content form {
     width: 100%;
   }
   
-  input[type=submit] {
+  .user-reg-btn input[type=submit] {
     width: 100%;
     margin: 40px 0;
     
@@ -268,7 +276,7 @@
     transition: 0.5s;
   }
   
-  input[type=submit]:hover {
+  .user-reg-btn input[type=submit]:hover {
     font-weight: bold;
     color: #003366;
     background: #ff9966;
@@ -282,43 +290,43 @@
     margin-left: 100px;
   }
   
-  .btn {
+  .user-reg-btn {
     display: flex;
   }
   
-  .sign-up {
+  .user-reg-sign-up {
     font-family: "Montserrat";
   }
   
-  .sign-up a {
+  .user-reg-sign-up a {
     color: blue;
   }
   
-  .sign-up a:hover {
+  .user-reg-sign-up a:hover {
     font-weight: bold;
   }
   
-  .sign-up a:visited {
+  .user-reg-sign-up a:visited {
     color: blue;
   }
   
   @media only screen and (max-width: 768px) {
-    .image {
+    .user-reg-image {
       display: none;
     }
     
-    .wrapper {
+    .user-reg-wrapper {
       width: 350px;
       height: auto;
   
       margin: 20px auto;
     }
   
-    .email, .password {
+    .user-reg-email, .user-reg-password {
       width: 300px;
     }
   
-    .title {
+    .user-reg-title {
       width: 100%;
       height: auto;
 
@@ -326,43 +334,48 @@
       justify-content: space-around;
     }
   
-    .title h1 {
-      font-size: 30px;
+    .user-reg-title h1 {
+      font-size: 25px;
       padding: 0;
       margin: 0;
     }
   
-    .logo {
+    .user-reg-logo {
       width: 40%;
     }
   
-    form {
+    .user-reg-content form {
       width: 300px;
     }
   
-    .sign-up {
+    .user-reg-sign-up {
       font-size: 15px;
     }
   
-    .email i, .password i {
+    .user-reg-email i, .user-reg-password i {
       padding-left: 5px;
     }
   
-    .email input, .password input {
+    .user-reg-email input, .user-reg-password input {
       width: 200px;
     }
   
-    .remember {
+    .user-reg-remember {
       display: flex;
     }
 
-    .file {
+    .user-reg-file {
       width: 100%;
       font-size: 15px;
     }
 
-    .file input {
-      width: 90%;
+    .user-reg-password input {
+      width: 185px !important;
+    }
+
+    .user-reg-file input {
+      font-size: 12px;
+      width: 100% !important;
       padding: 10px 15px;
     }
 
