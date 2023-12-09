@@ -21,7 +21,6 @@
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-  animation: fade-in 2s forwards;
 }
 
 .shop-reg-wrapper {
@@ -44,6 +43,7 @@
   overflow: hidden;
 
   background: rgba(220, 220, 220, .2);
+  animation: fade-in 2s forwards;
 }
 
 .shop-reg-content {
@@ -103,7 +103,7 @@
   line-height: 97.62px;
 }
 
-input {
+.shop-reg-content form input {
   width: 70%;
   padding: 20px;
 
@@ -180,10 +180,16 @@ input {
   transition: 0.5s;
 }
 
+.shop-reg-eye {
+  position: absolute;
+  top: 17px;
+  right: 30px;
+}
+
 .shop-reg-file {
   position: relative;
   width: 100%;
-  height: 65.6px;
+  height: 100%;
   font-size: 0.8em;
   font-family: "Montserrat";
   background-color: gainsboro;
@@ -193,7 +199,7 @@ input {
 }
 
 .shop-reg-file input {
-  width: 100%;
+  width: 100% !important;
   padding: 10px 25px;
 }
 
@@ -214,6 +220,7 @@ input {
   background-color: #ff9966;
   border: 1px solid black;
 }
+
 .shop-reg-wrapper::before {
   content: '';
   position: absolute;
