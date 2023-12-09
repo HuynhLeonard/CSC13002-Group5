@@ -11,21 +11,19 @@
   }
 }
 
-.body {
+.user-log-body {
   height: 100%;
   margin: 0;
-  padding: 20px 0;
+  padding: 30px 0;
 
   background: white;
   background-image: url(../img/background_1.png);
   background-repeat: no-repeat;
   background-position: center;
   background-size: cover;
-
-  animation: fade-in 2s forwards;
 }
 
-.wrapper {
+.user-log-wrapper {
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -44,9 +42,10 @@
   overflow: hidden;
 
   background: rgba(220, 220, 220, .2);
+  animation: fade-in 2s forwards;
 }
 
-.content {
+.user-log-content {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -76,7 +75,7 @@
   }
 }
 
-.logo {
+.user-log-logo {
   width: 35%;
 
   background: url(../img/team-logo.png);
@@ -87,7 +86,7 @@
   text-align: center;
 }
 
-.title {
+.user-log-title {
   display: flex;
   justify-content: space-between;
 
@@ -96,7 +95,7 @@
   width: 100%;
 }
 
-.title h1 {
+.user-log-title h1 {
   padding: 0;
   margin: 0;
 
@@ -107,7 +106,7 @@
   font-weight: bold;
 }
 
-input {
+.user-log-content form input {
   width: 350px;
   padding: 20px;
 
@@ -118,7 +117,7 @@ input {
   background-color: gainsboro;
 }
 
-.email, .password {
+.user-log-email, .user-log-password {
   position: relative;
   margin-bottom: 30px;
   width: 400px;
@@ -134,27 +133,27 @@ input {
   transition: 0.5s;
 }
 
-.email:hover, .password:hover {
+.user-log-email:hover, .user-log-password:hover {
   top: -5px;
   box-shadow: 0px 0px 20px 5px rgba(0,51,102,0.3);
   color: #ff9966;
 }
 
-.email input, .password input {
+.user-log-email input, .user-log-password input {
   outline: none;
   border: none
 }
 
-.password input {
-  width: 325px;
+.user-log-password input {
+  width: 325px !important;
 }
 
-.email i, .password i {
+.user-log-email i, .user-log-password i {
   font-size: 25px;
   line-height: 59.2px;
 }
 
-.email span, .password span {
+.user-log-email span, .user-log-password span {
   position: absolute;
   left: 0;
 
@@ -170,7 +169,7 @@ input {
   font-family: "Montserrat";
 }
 
-.content input:valid ~ span, .content input:focus ~ span {
+.user-log-content input:valid ~ span, .user-log-content input:focus ~ span {
   display: inline-block;
 
   width: auto; 
@@ -186,7 +185,7 @@ input {
   transition: 0.5s;
 }
 
-.wrapper::before {
+.user-log-wrapper::before {
   content: '';
   position: absolute;
   width: 300px;
@@ -195,7 +194,7 @@ input {
   animation: border 5s ease-in-out infinite;
 }
 
-.wrapper::after {
+.user-log-wrapper::after {
   content: '';
   position: absolute;
   background: ghostwhite;
@@ -213,38 +212,38 @@ input {
   }
 }
 
-form {
+.user-log-content form {
   width: 100%;
 }
 
-input[type=checkbox] {
+.user-log-remember input[type=checkbox] {
   width: auto;
   margin-right: 5px;
 }
 
-.remember label:hover, .forgot a:hover {
+.user-log-remember label:hover, .user-log-forgot a:hover {
   font-weight: bold;
 }
 
-.forgot a {
+.user-log-forgot a {
   color: blue;
 }
 
-.forgot a:visited {
+.user-log-forgot a:visited {
   color: blue;
 }
 
-.function {
+.user-log-function {
   display: flex;
   justify-content: space-between;
   font-family: "Montserrat";
 }
 
-.remember {
+.user-log-remember {
   display: flex;
 }
 
-input[type=submit] {
+.user-log-submit input[type=submit] {
   width: 100%;
   margin: 30px 0;
   
@@ -260,7 +259,7 @@ input[type=submit] {
   transition: 0.5s;
 }
 
-input[type=submit]:hover {
+.user-log-submit input[type=submit]:hover {
   font-weight: bold;
   color: #003366;
   background: #ff9966;
@@ -274,92 +273,92 @@ input[type=submit]:hover {
   margin-right: 100px;
 }
 
-.submit {
+.user-log-submit {
   display: flex;
 }
 
-.sign-up {
+.user-log-sign-up {
   font-family: "Montserrat";
 }
 
-.sign-up h4 {
+.user-log-sign-up h4 {
   font-weight: bold;
   font-size: 18px;
   display: inline;
 }
 
-.eye {
+.user-log-eye {
   margin-top: 18px;
 }
 
 @media only screen and (max-width: 768px) {
-  .wrapper {
+  .user-log-wrapper {
     width: 350px;
     height: auto;
 
     margin: 20px auto;
   }
 
-  .email, .password {
+  .user-log-email, .user-log-password {
     width: 300px;
   }
 
-  .function {
+  .user-log-function {
     position: relative;
     width: 300px;
     font-size: 13px;
     justify-content: space-between;
   }
 
-  .content {
+  .user-log-content {
     width: 90%;
   }
 
-  .title {
+  .user-log-title {
     width: 100%;
   }
 
-  .title h1 {
+  .user-log-title h1 {
     font-size: 24px;
     padding: 0;
     margin: 0;
     text-align: center;
   }
 
-  .logo {
+  .user-log-logo {
     width: 50%;
   }
 
-  form {
+  .user-log-content form {
     width: 300px;
   }
 
-  .sign-up {
+  .user-log-sign-up {
     font-size: 15px;
   }
 
-  .sign-up h4 {
+  .user-log-sign-up h4 {
     font-weight: bold;
     font-size: 16px;
   }
 
-  .email i, .password i {
+  .user-log-email i, .user-log-password i {
     padding-left: 5px;
   }
 
-  .email input, .password input {
+  .user-log-email input, .user-log-password input {
     width: 250px;
   }
 
-  .password input {
+  .user-log-password input {
     width: 225px;
   }
 
-  .remember {
+  .user-log-remember {
     display: flex;
   }
 
-  input[type=submit]:hover {
+  .user-log-submit input[type=submit]:hover {
     font-weight: bold;
     color: #003366;
     background: #ff9966;
