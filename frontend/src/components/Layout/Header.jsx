@@ -160,14 +160,15 @@ const Header = ({ activeHeading }) => {
           </ul>
         </div>
 
-        <div className="header-nav">
+        {/* <div className="header-nav">
           <Link to="/">Home</Link>
           <Link to="/best-selling">Best Sellings</Link>
           <Link to="/products">Products</Link>
           <Link to="/events">Events</Link>
           <Link to="/faq">FAQ</Link>
           <div className="header-animation header-start_home"></div>
-        </div>
+        </div> */}
+        <Navbar active={activeHeading}/>
 
         <div className="header-icon">
           <div className="header-wishlist">
