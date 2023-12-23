@@ -185,7 +185,7 @@ const Header = ({ activeHeading }) => {
           <div className="header-login">
             {isAuthenticated ? (
               <Link to="/profile">
-                <img src={`http://locahost:8000/${user.avatar}`} className="w-[35px] h-[35px] rounded-full" alt="" />
+                <img src={`http://localhost:8000/${user.avatar}`} className="w-[35px] h-[35px] rounded-full" alt="" />
               </Link>
             ) : (
               <Link to="/login">
