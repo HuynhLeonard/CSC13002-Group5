@@ -2,13 +2,14 @@ import React,{useState, useEffect} from 'react';
 import {productData} from "../../static/data";
 import styles from '../../styles/styles';
 import ProductCard from "../Route/ProductCard/ProductCard";
+import { useSelector } from 'react-redux';
 
 const SuggestedProduct = ({data}) => {
-  const [products, setProducts] = useState(null);
-
+  const [productData, setProductData] = useState();
+  const {allProducts} = useSelector((state) => state.products)
   useEffect(() => {
-    const d = productData && productData.filter((i) => i.category === data.category);
-    setProducts(d);
+    const products = allProducts && allProducts.filter((i) => i.category === data.category);
+    setProductData(products);
   }, []);
 
   // filter product base on category
@@ -21,7 +22,7 @@ const SuggestedProduct = ({data}) => {
           </h2>
           <div className='grid grid-cols-1 gap-[20px] md:grid-cols-2 md:gap-[25px] lg:grid-cols-4 lg:gap-[25px] xl:grid-cols-5 xl:gap-[30px] mb-12'>
             {
-              products && products.map((i,index) => (
+              productData && productData.map((i,index) => (
                 <ProductCard data={i} key={index} />
               ))
             }

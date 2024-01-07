@@ -1,5 +1,6 @@
 import React from "react";
 import styles from "../../styles/styles";
+import { leomacstore,leoscreen,leoshop } from "./Img/export";
 
 const Sponsored = () => {
   return (
@@ -9,21 +10,21 @@ const Sponsored = () => {
       <div className="flex justify-between w-full">
         <div className="flex items-start">
           <img
-            src="https://logos-world.net/wp-content/uploads/2020/04/Sony-Logo.png"
+            src={leomacstore}
             alt=""
             style={{width:"150px", objectFit:"contain"}}
           />
         </div>
         <div className="flex items-start">
           <img
-            src="https://logos-world.net/wp-content/uploads/2020/08/Dell-Logo-1989-2016.png"
+            src={leoshop}
             style={{width:"150px", objectFit:"contain"}}
             alt=""
           />
         </div>
         <div className="flex items-start">
           <img
-            src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/bf/LG_logo_%282015%29.svg/2560px-LG_logo_%282015%29.svg.png"
+            src={leoscreen}
             style={{width:"150px", objectFit:"contain"}}
             alt=""
           />
