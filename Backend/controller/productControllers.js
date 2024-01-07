@@ -1,11 +1,11 @@
 const express = require('express');
-const {isSeller} = require('../middleware/auth.js');
-const catchAsyncErrors = require("../middleware/catchAsyncErrors.js");
+const {isSeller, isAuthenticated, isAdmin} = require('../middleware/auth.js');
+const catchAsyncErrors = require("../middleware/catchAsyncErrors");
 const router = express.Router();
 const Product = require("../model/Product.js");
 const Shop = require("../model/Shop.js");
-const { upload } = require("../multer.js");
-const ErrorHandler = require("../utils/ErrorHandler.js");
+const { upload } = require("../multer");
+const ErrorHandler = require("../utils/ErrorHandler");
 const fs = require("fs");
 
 router.post('/create-product', upload.array("images"), catchAsyncErrors(async (req,res,next) => {
@@ -61,7 +61,7 @@ router.get("/get-all-products-shop/:id", catchAsyncErrors(async (req,res,next) =
 // get all products 
 router.get("/get-all-products", catchAsyncErrors(async (req,res,next) => {
     try {
-        const products = await Product.find();
+        const products = await Product.find().sort({createdAt: -1});
 
         res.status(200).json({
             success: true,
@@ -103,6 +103,73 @@ router.delete("/delete-shop-product/:id", isSeller, catchAsyncErrors(async (req,
         })
     } catch (error) {
         return next(new ErrorHandler(error,400));
+    }
+}));
+
+router.put('/create-new-review', isAuthenticated, catchAsyncErrors(async (req,res,next) => {
+    try {
+        const {user, rating, comment, productId, orderId} = req.body;
+
+        const product = await Product.findById(productId);
+
+        const review = {
+            user,
+            rating,
+            comment,
+            productId
+        };
+
+        // check whether a user haved review or not, then we can push more review to their account
+        const isReviewed = product.reviews.find((rev) => rev.user._id === rev.user._id);
+
+        if(isReviewed) {
+            product.reviews.forEach((rev) => {
+                if(rev.user._id === req.user._id) {
+                    (rev.rating = rating),
+                    (rev.comment = comment),
+                    (rev.user = user)
+                }
+            });
+        } else {
+            product.reviews.push(review);
+        }
+
+        let avg = 0;
+
+        product.reviews.forEach((rev) => {
+            avg += rev.rating;
+        });
+
+        product.ratings = avg / product.reviews.length;
+
+        await product.save({ validateBeforeSave: false });
+
+        await Order.findByIdAndUpdate(
+            orderId,
+            { $set: { "cart.$[elem].isReviewed": true } },
+            { arrayFilters: [{ "elem._id": productId }], new: true }
+        );      
+
+        res.status(200).json({
+            success: true,
+            message: "Reviwed succesfully!",
+        });
+    } catch (error) {
+        return next(new ErrorHandler(error, 400));
+    }
+}));
+
+router.get("/admin-all-products",isAuthenticated,isAdmin("Admin"),catchAsyncErrors(async (req, res, next) => {
+    try {
+        const products = await Product.find().sort({
+            createdAt: -1,
+        });
+        res.status(201).json({
+            success: true,
+            products,
+        });
+    } catch (error) {
+        return next(new ErrorHandler(error.message, 500));
     }
 }));
 

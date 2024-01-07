@@ -10,6 +10,7 @@ const jwt = require('jsonwebtoken');
 const sendMail = require("../utils/sendMail.js");
 const sendToken = require("../utils/jwtToken.js");
 const {isAuthenticated, isAdmin} = require("../middleware/auth.js");
+const user = require('../model/User.js');
 // register a new user
 router.post("/create-user", upload.single('file'), async (req,res,next) => {
     try {
@@ -42,11 +43,13 @@ router.post("/create-user", upload.single('file'), async (req,res,next) => {
             password: password,
             avatar: fileUrl,
         };
+        // end
 
         const activationToken = createActivationToken(user);
 
         const activationUrl = `http://localhost:3000/activation/${activationToken}`;
         
+        // Nodemailer
         try {
             await sendMail({
                 email: user.email,
@@ -198,6 +201,178 @@ router.put("/update-user-info", isAuthenticated, catchAsyncErrors(async (req,res
     } catch (error) {
         return next(new ErrorHandler(error.message, 500));
     }
-}))
+}));
+
+// update Avatar
+router.put('/update-avatar', isAuthenticated, upload.single('image'), catchAsyncErrors(async (req,res,next) => {
+    try {
+        const existedUser = await User.findById(req.user.id);
+        const existedAvatarPath = `uploads/${existedUser.avatar}`;
+
+        fs.unlinkSync(existedAvatarPath);
+
+        const newFileUrl = path.join(req.file.filename);
+
+        const user = await User.findByIdAndUpdate(req.user.id, {
+            avatar: newFileUrl
+        });
+
+        res.status(200).json({
+            success: true,
+            user
+        })
+    } catch (error) {
+        return next(new ErrorHandler(error.message), 500);
+    }
+}));
+
+// update address
+router.put("/update-user-addresses",isAuthenticated,catchAsyncErrors(async (req, res, next) => {
+    try {
+        const user = await User.findById(req.user.id);
+        const sameTypeAddress = user.addresses.find(
+            (address) => address.addressType === req.body.addressType
+        );
+        if (sameTypeAddress) {
+            return next(
+                new ErrorHandler(`${req.body.addressType} address already exists`)
+            );
+        }
+
+        const existsAddress = user.addresses.find(
+            (address) => address._id === req.body._id
+        );
+
+        if (existsAddress) {
+            Object.assign(existsAddress, req.body);
+        } else {
+          // add the new address to the array
+            user.addresses.push(req.body);
+        }
+
+        await user.save();
+        res.status(200).json({
+            success: true,
+            user,
+        });
+    } catch (error) {
+        return next(new ErrorHandler(error.message, 500));
+    }
+}));
+
+// delete address
+router.delete(
+    "/delete-user-address/:id",
+    isAuthenticated,
+    catchAsyncErrors(async (req, res, next) => {
+      try {
+        const userId = req.user._id;
+        const addressId = req.params.id;
+  
+        console.log(addressId);
+  
+        await User.updateOne(
+          {
+            _id: userId,
+          },
+          { $pull: { addresses: { _id: addressId } } }
+        );
+  
+        const user = await User.findById(userId);
+  
+        res.status(200).json({ success: true, user });
+      } catch (error) {
+        return next(new ErrorHandler(error.message, 500));
+      }
+    })
+  );
+// update password (we pass the old password to confirm if a user want to change)
+// body gồm old password to check, new password and confirm new password
+router.put('/update-user-password', isAuthenticated, catchAsyncErrors(async (req,res,next) => {
+    try {
+        const user = await User.findById(req.user.id).select('password');
+
+        const isPasswordMatched = await User.comparePassword(req.body.oldPassword);
+
+        if(!isPasswordMatched) {
+            return next(new ErrorHandler('Old password is not correct'))
+        }
+
+        if(req.body.newPassword !== req.body.confirmPassword) {
+            return next(new ErrorHandler("Password doesn't match!", 400));
+        }
+
+        user.password = req.body.newPassword;
+
+        await user.save();
+
+        res.status(200).json({
+            success: true,
+            message: "Password updated successfully!",
+        });
+    } catch (error) {
+        return next(new ErrorHandler(error.message, 500));
+    }
+}));
+
+router.get('/user-info/:id', catchAsyncErrors(async (req,res,next) => {
+    try {
+        const user = await User.findById(req.params.id);
+
+        res.status(200).json({
+            success: true,
+            user
+        })
+    } catch (error) {
+        return next(new ErrorHandler(error.message, 500));
+    }
+}));
+
+// function for Admin
+router.get(
+    "/admin-all-users",
+    isAuthenticated,
+    isAdmin("Admin"),
+    catchAsyncErrors(async (req, res, next) => {
+      try {
+        const users = await User.find().sort({
+          createdAt: -1,
+        });
+        res.status(201).json({
+          success: true,
+          users,
+        });
+      } catch (error) {
+        return next(new ErrorHandler(error.message, 500));
+      }
+    })
+  );
+  
+  // delete users --- admin
+  router.delete(
+    "/delete-user/:id",
+    isAuthenticated,
+    isAdmin("Admin"),
+    catchAsyncErrors(async (req, res, next) => {
+      try {
+        const user = await User.findById(req.params.id);
+  
+        if (!user) {
+          return next(
+            new ErrorHandler("User is not available with this id", 400)
+          );
+        }
+  
+        await User.findByIdAndDelete(req.params.id);
+  
+        res.status(201).json({
+          success: true,
+          message: "User deleted successfully!",
+        });
+      } catch (error) {
+        return next(new ErrorHandler(error.message, 500));
+      }
+    })
+  );
 
 module.exports = router;

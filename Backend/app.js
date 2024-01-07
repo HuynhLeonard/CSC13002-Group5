@@ -8,7 +8,7 @@ const userRoute = require("./controller/userControllers.js");
 const shopRoute = require("./controller/shopControllers.js");
 const productRoute = require("./controller/productControllers.js");
 const eventRoute = require("./controller/eventControllers.js");
-
+const orderRoute = require("./controller/orderControllers.js");
 const corsOptions = {
     origin: "http://localhost:3000",
     credentials: true
@@ -26,6 +26,7 @@ app.use("/api/user", userRoute);
 app.use("/api/shop", shopRoute);
 app.use("/api/product", productRoute);
 app.use("/api/event", eventRoute);
+app.use("/api/order", orderRoute);
 app.use(ErrorHandler);
 
 module.exports = app;

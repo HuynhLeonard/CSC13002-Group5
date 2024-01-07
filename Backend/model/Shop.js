@@ -2,11 +2,10 @@ const mongoose = require("mongoose");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 
-
 const shopSchema = new mongoose.Schema({
     name: {
         type: String,
-        required: [true, "Please enter your shop name!"],
+        required: [true, 'Please enter the name of your shop!']
     },
     email: {
         type: String,
@@ -14,15 +13,18 @@ const shopSchema = new mongoose.Schema({
     },
     password: {
         type: String,
-        required: [true, " Please enter your pasword"],
-        minLength: [6, "Password should be greater than 6 character"],
+        required: [true, "Please enter your password"],
+        minLength: [6, "Password should be greater than 6 characters"],
         select: false,
+    },
+    description:{
+        type: String,
     },
     address: {
         type: String,
         required: true,
     },
-    phoneNumber: {
+    phoneNumber:{
         type: Number,
         required: true,
     },
@@ -34,7 +36,38 @@ const shopSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    createAt: {
+    // ma buu chinh(Zip Portal Code/Postal Code)
+    zipCode:{
+        type: Number,
+        required: true,
+    },
+    withdrawMethod: {
+        type: Object,
+    },
+    availableBalance: {
+        type: Number,
+        default: 0,
+    },
+    transections: [
+        {
+            amount: {
+                type: Number,
+                required: true,
+            },
+            status: {
+                type: String,
+                default: "Processing",
+            },
+            createdAt: {
+                type: Date,
+                default: Date.now(),
+            },
+            updatedAt: {
+                type: Date,
+            },
+        },
+    ],
+    createdAt: {
         type: Date,
         default: Date.now(),
     },
@@ -42,21 +75,23 @@ const shopSchema = new mongoose.Schema({
     resetPasswordTime: Date,
 });
 
-
+// hash password
 shopSchema.pre("save", async function (next) {
-    if (!this.isModified("password")) {
+    if(!this.isModified("password")) {
         next();
     }
+
     this.password = await bcrypt.hash(this.password, 10);
 });
 
-
-shopSchema.methods.getJwtToken = function () {
-    return jwt.sign({ id: this._id}, process.env.JWT_SECRET_KEY, {
+// Token
+shopSchema.methods.getJwtToken = function() {
+    return jwt.sign({id: this._id}, process.env.JWT_SECRET_KEY, {
         expiresIn: process.env.JWT_EXPIRES,
-    });
+    })
 };
 
+// compare password
 shopSchema.methods.comparePassword = async function (enteredPassword) {
     return await bcrypt.compare(enteredPassword, this.password);
 };
