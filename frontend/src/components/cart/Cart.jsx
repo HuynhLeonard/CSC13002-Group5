@@ -27,13 +27,13 @@ const Cart = ({ setOpenCart }) => {
 
   return (
     <div className="fixed top-0 left-0 w-full bg-[#0000004b] h-screen z-10">
-      <div className="fixed top-0 right-0 h-full w-[25%] bg-white flex flex-col overflow-y-scroll justify-between shadow-sm">
+      <div className="fixed top-0 right-0 h-full w-[80%] 800px:w-[25%] bg-white flex flex-col overflow-y-scroll justify-between shadow-sm">
         {cart && cart.length === 0 ? (
           <div className="w-full h-screen flex items-center justify-center">
             <div className="flex w-full justify-end pt-5 pr-5 fixed top-3 right-3">
                <RxCross1 
                 size={25}
-                className="cursor-pointer"
+                className="cursor-pointer text-[#000]"
                 onClick={() => setOpenCart(false)}
                 />
             </div>
@@ -45,14 +45,14 @@ const Cart = ({ setOpenCart }) => {
               <div className="flex w-full justify-end pt-5 pr-5">
                 <RxCross1
                   size={25}
-                  className="cursor-pointer"
+                  className="cursor-pointer text-[#000]"
                   onClick={() => setOpenCart(false)}
                 />
               </div>
               {/* Item length */}
               <div className={`${styles.noramlFlex} p-4`}>
                 <IoBagHandleOutline size={25} />
-                <h5 className="pl-2 text-[20px] font-[500] text-[#000000]">{cart && cart.length} items</h5>
+                <h5 className="pl-2 text-[20px] font-[500] text-[#000]">{cart && cart.length} items</h5>
               </div>
 
               {/* cart Single Items */}
@@ -142,7 +142,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
           </h4>
         </div>
         <RxCross1
-          className="cursor-pointer"
+          className="cursor-pointer text-[#000]"
           onClick={() => removeFromCartHandler(data)}
         />
       </div>

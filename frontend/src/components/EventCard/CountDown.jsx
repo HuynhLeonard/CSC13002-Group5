@@ -1,20 +1,31 @@
-import React, {useState, useEffect} from 'react'
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import { server } from "../../server";
 
-const CountDown = ({data}) => {
+const CountDown = ({ data }) => {
   const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-  
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setTimeLeft(calculateTimeLeft());
     }, 1000);
+
+    if (
+      typeof timeLeft.days === 'undefined' &&
+      typeof timeLeft.hours === 'undefined' &&
+      typeof timeLeft.minutes === 'undefined' &&
+      typeof timeLeft.seconds === 'undefined'
+    ) {
+      // axios.delete(`http://localhost:8000/api/event/delete-shop-event/${data._id}`);
+    }
     return () => clearTimeout(timer);
   });
 
   function calculateTimeLeft() {
-    const difference = +new Date(data.finishDate) - +new Date();
+    const difference = +new Date(data.Finish_Date) - +new Date();
     let timeLeft = {};
 
-    if(difference > 0) {
+    if (difference > 0) {
       timeLeft = {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
@@ -22,6 +33,7 @@ const CountDown = ({data}) => {
         seconds: Math.floor((difference / 1000) % 60),
       };
     }
+
     return timeLeft;
   }
 
@@ -46,6 +58,6 @@ const CountDown = ({data}) => {
       )}
     </div>
   );
-}
+};
 
 export default CountDown;

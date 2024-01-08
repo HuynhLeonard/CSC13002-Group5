@@ -20,11 +20,17 @@ const UserOrderDetails = () => {
 
   const { id } = useParams();
 
+  const data = orders && orders.find((item) => item._id === id);
   useEffect(() => {
     dispatch(getAllOrdersOfUser(user._id));
+    console.log(id);
+    console.log(user);
+    console.log(orders);
+    console.log(data)
+    console.log(data.cart);
   }, [dispatch]);
 
-  const data = orders && orders.find((item) => item._id === id);
+  
 
   const reviewHandler = async (e) => {
     await axios
@@ -97,13 +103,14 @@ const UserOrderDetails = () => {
                 US${item.discountPrice} x {item.qty}
               </h5>
             </div>
-            {item.isReviewed || item.status !== "delivered" ? null : (
+            {!item.isReviewed && data?.status === "Delivered" ?
               <div
                 className={`${styles.button} text-[#fff]`}
                 onClick={() => setOpen(true) || setSelectedItem(item)}
               >
                 Write a review
-              </div>
+              </div> : (
+                null
             )}
           </div>
         ))}

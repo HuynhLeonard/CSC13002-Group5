@@ -25,7 +25,7 @@ const orderSchema = new mongoose.Schema({
         id: {
             type: String
         },
-        staus: {
+        status: {
             type: String
         },
         type: {

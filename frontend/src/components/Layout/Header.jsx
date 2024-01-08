@@ -20,6 +20,10 @@ import "../Css/Header.css";
 
 const Header = ({ activeHeading }) => {
   const { isAuthenticated, user } = useSelector((state) => state.user);
+  const { isSeller } = useSelector((state) => state.seller);
+  const { wishlist } = useSelector((state) => state.wishlist);
+  const { cart } = useSelector((state) => state.cart);
+  const { allProducts } = useSelector((state) => state.products);
   const [searchTerm, setSearchTerm] = useState("");
   const [searchData, setSearchData] = useState(null);
   const [active, setActive] = useState(false);
@@ -32,9 +36,11 @@ const Header = ({ activeHeading }) => {
     const term = e.target.value;
     setSearchTerm(term);
 
-    const filteredProducts = productData.filter((product) =>
-      product.name.toLowerCase().includes(term.toLowerCase())
-    );
+    const filteredProducts =
+      allProducts &&
+      allProducts.filter((product) =>
+        product.name.toLowerCase().includes(term.toLowerCase())
+      );
     setSearchData(filteredProducts);
   };
 
@@ -58,33 +64,38 @@ const Header = ({ activeHeading }) => {
             placeholder="Search Products..."
             value={searchTerm}
             onChange={handleSearchChange}
+            // className="h-[40px] w-full px-2 border-[#3957db] border-[2px] rounded-md"
           />
-          <i class="bx bx-search-alt-2"></i>
-          {searchData && searchData.length !== 0 && searchTerm.length !== 0 ? (
-            <div className="absolute min-h-[30vh] bg-slate-300 shadow-sm-2 z-[9] p-3 left-80 right-96 rounded-2xl">
-              {searchData &&
-                searchData.map((i, index) => {
-                  const d = i.name;
-
-                  const Product_name = d.replace(/\s+/g, "-");
-                  return (
-                    <Link to={`/product/${Product_name}`}>
-                      <div className="w-100 flex mb-2">
-                        <img
-                          src={i.image_Url[0].url}
-                          alt=""
-                          className="w-[40px] h-[40px] mr-[20px]"
-                        />
-                        <h1>{i.name}</h1>
-                      </div>
-                    </Link>
-                  );
-                })}
-            </div>
-          ) : null}
+          <AiOutlineSearch
+              size={30}
+              className="absolute right-2 top-1.5 cursor-pointer"
+            />
+          {searchData && searchData.length !== 0 ? (
+              <div className="mt-[50px] w-[850px] absolute min-h-[30vh] bg-slate-300 shadow-sm-2 z-[9] p-3 left-[310px] right-96 rounded-2xl">
+                {searchData &&
+                  searchData.map((i, index) => {
+                    return (
+                      <Link to={`/product/${i._id}`}>
+                        <div className="w-full flex items-start-py-3">
+                          <img
+                            src={`http://localhost:8000/${i.images[0]}`}
+                            alt=""
+                            className="w-[40px] h-[40px] mr-[10px]"
+                          />
+                          <h1>{i.name}</h1>
+                        </div>
+                      </Link>
+                    );
+                  })}
+              </div>
+            ) : null}
         </div>
         <div className="header-become_btn">
-          <Link to="/shop-create">Become seller</Link>
+        <Link to={`${isSeller ? "/dashboard" : "/shop-create"}`}>
+              <h1 className="">
+                {isSeller ? "Go Dashboard" : "Become Seller"}{" "}
+              </h1>
+            </Link>
         </div>
       </div>
       <div className="header-header">
