@@ -31,11 +31,11 @@ const Wishlist = ({ setOpenWishlist }) => {
             <div className="flex w-full justify-end pt-5 pr-5 fixed top-3 right-3">
               <RxCross1
                 size={25}
-                className="cursor-pointer"
+                className="cursor-pointer text-[#000]"
                 onClick={() => setOpenWishlist(false)}
               />
             </div>
-            <h5>Wishlist Items is empty!</h5>
+            <h5 className="text-[#000] text-[14px]">Wishlist Items is empty!</h5>
           </div>
         ) : (
           <>
@@ -43,14 +43,14 @@ const Wishlist = ({ setOpenWishlist }) => {
               <div className="flex w-full justify-end pt-5 pr-5">
                 <RxCross1
                   size={25}
-                  className="cursor-pointer"
+                  className="cursor-pointer text-[#000]"
                   onClick={() => setOpenWishlist(false)}
                 />
               </div>
               {/* Item length */}
               <div className={`${styles.noramlFlex} p-4`}>
                 <AiOutlineHeart size={25} />
-                <h5 className="pl-2 text-[20px] font-[500]">
+                <h5 className="pl-2 text-[20px] text-[#000] font-[500]">
                   {wishlist && wishlist.length} items
                 </h5>
               </div>
@@ -77,8 +77,8 @@ const CartSingle = ({ data,removeFromWishlistHandler,addToCartHandler }) => {
 
   return (
     <div className="border-b p-4">
-      <div className="w-full flex items-center">
-        <RxCross1 className="cursor-pointer"
+      <div className="w-full h-[120px] flex items-center">
+        <RxCross1 className="cursor-pointer text-[#000]"
         onClick={() => removeFromWishlistHandler(data)}
         />
         <img
@@ -88,13 +88,13 @@ const CartSingle = ({ data,removeFromWishlistHandler,addToCartHandler }) => {
         />
 
         <div className="pl-[5px]">
-          <h1>{data.name}</h1>
+          <h1 className="text-[14px] text-[#000]">{data.name}</h1>
           <h4 className="font-[600] text-[17px] pt-[3px] text-[#d02222] font-Roboto">
             US${totalPrice}
           </h4>
         </div>
         <div>
-          <BsCartPlus size={20} className="cursor-pointer" tile="Add to cart"
+          <BsCartPlus size={20} className="cursor-pointer text-[#000]" tile="Add to cart"
             onClick={() => addToCartHandler(data)}
           />
         </div>

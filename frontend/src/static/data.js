@@ -211,55 +211,55 @@ export const categoriesData = [
     title: "PC",
     subTitle: "",
     image_Url:
-      "https://indian-retailer.s3.ap-south-1.amazonaws.com/s3fs-public/2021-07/kosme1.png",
+      'https://i.pinimg.com/564x/2a/7c/44/2a7c44fff5be9e05c1ef3eee9c9a62a1.jpg'
   },
   {
     id: 3,
     title: "Mobile-Phone",
     subTitle: "",
     image_Url:
-      "https://img.freepik.com/free-vector/ordering-goods-online-internet-store-online-shopping-niche-e-commerce-website-mother-buying-babies-clothes-footwear-toys-infant-accessories_335657-2345.jpg?w=2000",
+    "https://st-troy.mncdn.com/mnresize/1500/1500/Content/media/ProductImg/original/mpwp3tua-apple-iphone-14-256gb-mavi-mpwp3tua-637986832343472449.jpg"
   },
   {
     id: 4,
     title: "Ipad-Tablets",
     subTitle: "",
     image_Url:
-      "https://www.shift4shop.com/2015/images/industries/clothing/clothing-apparel.png",
+      'https://i.pinimg.com/564x/6c/5c/0b/6c5c0b95f5a76aa909af1ac6e92bb719.jpg'
   },
   {
     id: 5,
     title: "LCD-Screen",
     subTitle: "",
     image_Url:
-      "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQvBQPQMVNRd6TtDkGs2dCri0Y-rxKkFOiEWw&usqp=CAU",
+      "https://i.pinimg.com/564x/17/27/3e/17273e4e1078d1f500adcb63efd1163e.jpg",
   },
   {
     id: 6,
     title: "Headphones-Speaker",
     subTitle: "",
     image_Url:
-      "https://securecdn.pymnts.com/wp-content/uploads/2014/11/Gifts-Photo-700x489.jpg",
+      "https://i.pinimg.com/564x/fe/9d/f5/fe9df51c95afffa3fceba1382541cd74.jpg",
   },
   {
     id: 7,
     title: "Keyboard",
     subTitle: "",
-    image_Url: "https://cdn.openpr.com/T/c/Tc15444071_g.jpg",
+    image_Url: "https://i.pinimg.com/564x/dd/1a/54/dd1a54b637e780824cd6bdb7c02e908d.jpg",
   },
   {
     id: 8,
     title: "Mouse",
     subTitle: "",
     image_Url:
-      "https://st-troy.mncdn.com/mnresize/1500/1500/Content/media/ProductImg/original/mpwp3tua-apple-iphone-14-256gb-mavi-mpwp3tua-637986832343472449.jpg",
+      "https://i.pinimg.com/564x/c5/0e/bf/c50ebf1dfb8314d3cfaa8e7724b2aa8a.jpg",
   },
   {
     id: 9,
     title: "Tables-Chairs",
     subTitle: "",
     image_Url:
-      "https://static.vecteezy.com/system/resources/previews/011/996/555/original/3d-black-headphone-illustration-ecommerce-icon-png.png",
+      "https://i.pinimg.com/564x/06/5b/e2/065be244dbe61aeab11a0f690a2bcb37.jpg",
   },
   {
     id: 10,

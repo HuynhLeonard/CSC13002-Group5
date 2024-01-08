@@ -40,7 +40,7 @@ const AllCoupons = () => {
   }, [dispatch]);
 
   const handleDelete = async (id) => {
-    axios.delete(`http://localhost:8000/api/coupoun/delete-coupon/${id}`,{withCredentials: true}).then((res) => {
+    axios.delete(`http://localhost:8000/api/coupoun/delete-coupoun/${id}`,{withCredentials: true}).then((res) => {
       toast.success("Coupon code deleted succesfully!")
     })
     window.location.reload();

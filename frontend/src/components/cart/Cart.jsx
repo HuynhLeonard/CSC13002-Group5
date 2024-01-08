@@ -37,7 +37,7 @@ const Cart = ({ setOpenCart }) => {
                 onClick={() => setOpenCart(false)}
                 />
             </div>
-            <h5>Cart Items is empty!</h5>
+            <h5 className="text-[#000] text-[14px]">Cart Items is empty!</h5>
           </div>
         ) : (
           <>
@@ -98,6 +98,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
       toast.error("Product stock limited!");
     } else {
       setValue(value + 1);
+      console.log(value);
       const updateCartData = { ...data, qty: value + 1 };
       quantityChangeHandler(updateCartData);
     }
@@ -105,6 +106,7 @@ const CartSingle = ({ data, quantityChangeHandler, removeFromCartHandler }) => {
 
   const decrement = (data) => {
     setValue(value === 1 ? 1 : value - 1);
+    console.log(value);
     const updateCartData = { ...data, qty: value === 1 ? 1 : value - 1 };
     quantityChangeHandler(updateCartData);
   };

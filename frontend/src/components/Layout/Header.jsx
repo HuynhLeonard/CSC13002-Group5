@@ -11,6 +11,7 @@ import { IoIosArrowDown, IoIosArrowForward } from "react-icons/io";
 import { BiMenuAltLeft } from "react-icons/bi";
 import { CgProfile } from "react-icons/cg";
 import DropDown from "./Dropdown";
+import { useEffect } from "react";
 import Navbar from "./Navbar";
 import { useSelector } from "react-redux";
 import Cart from "../cart/Cart";
@@ -31,6 +32,10 @@ const Header = ({ activeHeading }) => {
   const [openCart, setOpenCart] = useState(false);
   const [openWishlist, setOpenWishlist] = useState(false);
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    console.log(openWishlist);
+  })
 
   const handleSearchChange = (e) => {
     const term = e.target.value;
@@ -183,8 +188,9 @@ const Header = ({ activeHeading }) => {
 
         <div className="header-icon">
           <div className="header-wishlist">
-            <div onClick={() => setOpenWishlist(true)}></div>
-            <i class="bx bx-heart"></i>
+            <div onClick={() => setOpenWishlist(true)}>
+              <i class="bx bx-heart"></i>
+            </div>
           </div>
 
           <div className="header-cart">
@@ -193,10 +199,10 @@ const Header = ({ activeHeading }) => {
             </div>
           </div>
 
-          <div className="header-login">
+          <div className="header-login ">
             {isAuthenticated ? (
               <Link to="/profile">
-                <img src={`http://localhost:8000/${user.avatar}`} className="w-[35px] h-[35px] rounded-full" alt="" />
+                <img src={`http://localhost:8000/${user.avatar}`} className="ml-[15px] mt-[7px] w-[35px] h-[35px] rounded-full" alt="" />
               </Link>
             ) : (
               <Link to="/login">

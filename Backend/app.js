@@ -9,6 +9,7 @@ const shopRoute = require("./controller/shopControllers.js");
 const productRoute = require("./controller/productControllers.js");
 const eventRoute = require("./controller/eventControllers.js");
 const orderRoute = require("./controller/orderControllers.js");
+const coupounRoute = require('./controller/coupounCode.js');
 const corsOptions = {
     origin: "http://localhost:3000",
     credentials: true
@@ -27,6 +28,7 @@ app.use("/api/shop", shopRoute);
 app.use("/api/product", productRoute);
 app.use("/api/event", eventRoute);
 app.use("/api/order", orderRoute);
+app.use("/api/coupoun", coupounRoute);
 app.use(ErrorHandler);
 
 module.exports = app;

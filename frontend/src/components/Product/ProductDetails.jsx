@@ -80,7 +80,7 @@ const ProductDetails = ({data}) => {
 
   const averageRating = totalRatings / totalReviewsLength || 0;
   const handleMessageSubmit = () => {
-    navigate("/inbox?conversation=507ebjver884ehfdjeriv84");
+    
   }
 
   return (
@@ -95,7 +95,7 @@ const ProductDetails = ({data}) => {
                   alt=""
                   className="w-[80%]"
                 />
-                <div className="w-full flex">
+                <div className="w-[80%] flex">
                   {data &&
                     data.images.map((i, index) => (
                       <div
@@ -106,7 +106,7 @@ const ProductDetails = ({data}) => {
                         <img
                           src={`http://localhost:8000/${i}`}
                           alt=""
-                          className="h-[200px] overflow-hidden mr-3 mt-3"
+                          className="h-[100px] overflow-hidden mr-3 mt-3"
                           onClick={() => setSelect(index)}
                         />
                       </div>
@@ -133,7 +133,7 @@ const ProductDetails = ({data}) => {
                 <div className="flex items-center mt-12 justify-between pr-3">
                   <div>
                     <button
-                      className="bg-gradient-to-r from-teal-400 to-teal-500 text-white font-bold rounded-l px-4 py-2 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
+                      className="mr-[3px] bg-gradient-to-r from-teal-400 to-teal-500 text-white font-bold px-4 py-2 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
                       onClick={decrementCount}
                     >
                       -
@@ -142,7 +142,7 @@ const ProductDetails = ({data}) => {
                       {count}
                     </span>
                     <button
-                      className="bg-gradient-to-r from-teal-400 to-teal-500 text-white font-bold rounded-l px-4 py-2 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
+                      className="ml-[3px] bg-gradient-to-r from-teal-400 to-teal-500 text-white font-bold px-4 py-2 shadow-lg hover:opacity-75 transition duration-300 ease-in-out"
                       onClick={incrementCount}
                     >
                       +
