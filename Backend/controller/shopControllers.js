@@ -5,7 +5,7 @@ const fs = require("fs");
 const jwt = require("jsonwebtoken");
 const sendMail = require("../utils/sendMail.js");
 const sendToken = require("../utils/jwtToken.js");
-const {isAuthenticated,isSeller} = require("../middleware/auth.js");
+const {isAuthenticated,isSeller, isAdmin} = require("../middleware/auth.js");
 const {upload} = require("../multer.js");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors.js");
 const ErrorHandler = require("../utils/ErrorHandler.js");
@@ -189,6 +189,153 @@ router.delete("/delete-shop/:id", catchAsyncErrors(async (req,res,next) => {
         success: true,
         message: "Shop has been delete with its prorducts"
     })
-}))
+}));
+
+// first unlink the picture, then get the newest picture => Update avatar
+router.put('/update-shop-avatar', isSeller, upload.single('image'), catchAsyncErrors(async (req,res,next) => {
+    try {
+        const existedUser = await Shop.findById(req.seller._id);
+
+        const existedAvatarPath = `uploads/${existedUser.avatar}`;
+
+        fs.unlinkSync(existedAvatarPath);
+
+        const newFileUrl = path.join(req.file.filename);
+
+        const seller = await Shop.findByIdAndUpdate(req.seller._id, {
+            avatar: newFileUrl
+        });
+
+        res.status(200).json({
+            success: true,
+            seller
+        })
+    } catch (error) {
+        return next(new ErrorHandler(error.message, 400));
+    }
+}));
+
+router.put('/update-seller-info', isSeller, catchAsyncErrors(async (req,res,next) => {
+    try {
+        const {name, description, address, phoneNumber, zipCode} = req.body;
+
+        const shop = await Shop.findOne(req.seller._id);
+
+        if(!shop) {
+            return next(new ErrorHandler("User not found", 400));
+        }
+
+        shop.name = name;
+        shop.description = description;
+        shop.address = address;
+        shop.phoneNumber = phoneNumber;
+        shop.zipCode = zipCode;
+
+        await shop.save();
+
+        res.status(200).json({
+            success: true,
+            shop
+        })
+
+    } catch (error) {
+        return next(new ErrorHandler(error.message, 500));
+    }
+}));
+
+router.get(
+    "/admin-all-sellers",
+    isAuthenticated,
+    isAdmin("Admin"),
+    catchAsyncErrors(async (req, res, next) => {
+      try {
+        const sellers = await Shop.find().sort({
+          createdAt: -1,
+        });
+        res.status(201).json({
+          success: true,
+          sellers,
+        });
+      } catch (error) {
+        return next(new ErrorHandler(error.message, 500));
+      }
+    })
+  );
+  
+  // delete seller ---admin
+  router.delete(
+    "/delete-seller/:id",
+    isAuthenticated,
+    isAdmin("Admin"),
+    catchAsyncErrors(async (req, res, next) => {
+      try {
+        const seller = await Shop.findById(req.params.id);
+  
+        if (!seller) {
+          return next(
+            new ErrorHandler("Seller is not available with this id", 400)
+          );
+        }
+  
+        await Shop.findByIdAndDelete(req.params.id);
+  
+        res.status(201).json({
+          success: true,
+          message: "Seller deleted successfully!",
+        });
+      } catch (error) {
+        return next(new ErrorHandler(error.message, 500));
+      }
+    })
+  );
+  
+  // update seller withdraw methods --- sellers
+  router.put(
+    "/update-payment-methods",
+    isSeller,
+    catchAsyncErrors(async (req, res, next) => {
+      try {
+        const { withdrawMethod } = req.body;
+  
+        const seller = await Shop.findByIdAndUpdate(req.seller._id, {
+          withdrawMethod,
+        });
+  
+        res.status(201).json({
+          success: true,
+          seller,
+        });
+      } catch (error) {
+        return next(new ErrorHandler(error.message, 500));
+      }
+    })
+  );
+  
+  // delete seller withdraw merthods --- only seller
+router.delete(
+    "/delete-withdraw-method/",
+    isSeller,
+    catchAsyncErrors(async (req, res, next) => {
+      try {
+        const seller = await Shop.findById(req.seller._id);
+  
+        if (!seller) {
+          return next(new ErrorHandler("Seller not found with this id", 400));
+        }
+  
+        seller.withdrawMethod = null;
+  
+        await seller.save();
+  
+        res.status(201).json({
+          success: true,
+          seller,
+        });
+      } catch (error) {
+        return next(new ErrorHandler(error.message, 500));
+      }
+    })
+  );
+  
 
 module.exports = router;

@@ -1,0 +1,386 @@
+@keyframes fade-in {
+  from {
+    background-color: rgba(#000, 0.25);
+    opacity: 0;
+    transform: translateY(50vh);
+  }
+  to {
+    background-color: rgba(#000, 0);
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.user-reg-body {
+    height: 100%;
+    margin: 0;
+    padding: 20px 0;
+  
+    background: white;
+    background-image: url(../img/background_2.png);
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+  }
+  
+  .user-reg-wrapper {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+  
+    width: 450px;
+    height: auto;
+    
+    margin: 80px auto;
+  
+    border: none;
+    box-shadow: 0px 0px 35px 0px rgba(0,51,102,0.75);
+    border-radius: 50px;
+  
+    position: relative;
+    z-index: 10;
+    overflow: hidden;
+  
+    background: rgba(220, 220, 220, .2);
+    animation: fade-in 2s forwards;
+  }
+
+  .user-reg-content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  
+    width: 100%;
+    height: 100%;
+  
+    position: relative;
+    z-index: 10;
+  
+    padding: 30px;
+  }
+
+  @keyframes slide {
+    0% {
+      background: url(../img/shop-logo.png);
+      background-repeat: no-repeat;
+    }
+    50% {
+      background: url(../img/team-logo.png);
+      background-repeat: no-repeat;
+    }
+    100% {
+      background: url(../img/shop-logo.png);
+      background-repeat: no-repeat;
+    }
+  }
+  
+  .user-reg-logo {
+    width: 30%;
+  
+    background: url(../img/team-logo.png);
+    background-repeat: no-repeat;
+    
+    animation: slide 3s infinite;
+  
+    text-align: center;
+  }
+  
+  .user-reg-title {
+    width: 100%;
+
+    display: flex;
+    justify-content: space-around;
+
+    margin-bottom: 30px;
+  }
+  
+  .user-reg-title h1 {
+    padding: 0;
+    margin: 0;
+
+    font-family: "Agbalumo";
+    font-size: 38px;
+    font-weight: bold;
+
+    line-height: 97.62px;
+  }
+  
+  .user-reg-content form input {
+    width: 70%;
+    padding: 20px;
+  
+    text-align: center;
+    
+    border-radius: 20px;
+  
+    background-color: gainsboro;
+  }
+  
+  .user-reg-email, .user-reg-password, .user-reg-name {
+    position: relative;
+    margin-bottom: 30px;
+    width: 100%;
+  
+    border: 1px solid black;
+    border-radius: 20px;
+  
+    display: flex;
+    justify-content: center;
+  
+    background-color: gainsboro;
+  
+    transition: 0.5s;
+  }
+  
+  .user-reg-email:hover, .user-reg-password:hover, .user-reg-name:hover, .user-reg-file:hover {
+    top: -5px;
+    box-shadow: 0px 0px 20px 5px rgba(0,51,102,0.3);
+    color: #ff9966;
+  }
+  
+  .user-reg-email input, .user-reg-password input, .user-reg-name input {
+    outline: none;
+    border: none;
+  }
+  
+  .user-reg-name i, .user-reg-email i, .user-reg-password i {
+    font-size: 25px;
+    line-height: 59.2px;
+  }
+  
+  .user-reg-email span, .user-reg-password span, .user-reg-name span {
+    position: absolute;
+    left: 0;
+  
+    width: 100%;
+    line-height: 59.2px;
+    text-align: center;
+    pointer-events: none;
+    
+    font-size: 1em;
+    color: rgba(0, 0, 0, 0.2);
+    text-transform: uppercase;
+  
+    font-family: "Montserrat";
+  }
+  
+  .user-reg-content input:valid ~ span, .user-reg-content input:focus ~ span {
+    display: inline-block;
+    width: auto; 
+    height: 10px;
+  
+    color: #003366;
+    transform: translateX(30px) translateY(-38px);
+    font-size: 0.8em;
+    font-family: "Montserrat";
+    font-weight: bold;
+  
+    transition: 0.5s;
+  }
+  
+  .user-reg-file {
+    position: relative;
+    width: 100%;
+    height: 100%;
+
+    font-size: 1em;
+    font-family: "Montserrat";
+
+    background-color: gainsboro;
+
+    border: 1px solid black;
+    border-radius: 20px;
+
+    transition: 0.5s;
+  }
+
+  .user-reg-password input {
+    width: 245px !important;
+  }
+
+  .user-reg-file input {
+    width: 100% !important;
+    padding: 10px 25px;
+    font-size: 14px;
+  }
+
+  .user-reg-eye {
+    margin-top: 18px;
+  }
+
+  ::-webkit-file-upload-button {
+    width: 40%;
+    height: 40px;
+
+    color: gainsboro;
+    background-color: #003366;
+
+    border: none;
+    border-radius: 20px;
+    box-shadow: 1px 0 1px 1px ;
+  }
+
+  ::-webkit-file-upload-button:hover {
+    top: -5px;
+    box-shadow: 0px 0px 20px 5px rgba(0,51,102,0.3);
+    color: #003366;
+    background-color: #ff9966;
+    border: 1px solid black;
+  }
+
+  .user-reg-wrapper::before {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 180%;
+    background: linear-gradient(OrangeRed, rgb(8, 8, 248));
+    animation: border 5s ease-in-out infinite;
+  }
+  
+  .user-reg-wrapper::after {
+    content: '';
+    position: absolute;
+    background: ghostwhite;
+    inset: 8px;
+    border-radius: 50px;
+  }
+  
+  @keyframes border {
+    0% {
+      transform: rotate(0deg);
+    }
+    100%
+    {
+      transform: rotate(360deg);
+    }
+  }
+  
+  .user-reg-content form {
+    width: 100%;
+  }
+  
+  .user-reg-btn input[type=submit] {
+    width: 100%;
+    margin: 40px 0;
+    
+    font-family: "Montserrat";
+    font-size: 20px;
+    
+    background: gainsboro;
+    border: none;
+  
+    position: relative;
+  
+    overflow: hidden;
+    transition: 0.5s;
+  }
+  
+  .user-reg-btn input[type=submit]:hover {
+    font-weight: bold;
+    color: #003366;
+    background: #ff9966;
+    
+    box-shadow: 0 0 10px #ff9966;
+    cursor: pointer;
+  
+    position: relative;
+  
+    margin-right: 100px;
+    margin-left: 100px;
+  }
+  
+  .user-reg-btn {
+    display: flex;
+  }
+  
+  .user-reg-sign-up {
+    font-family: "Montserrat";
+  }
+  
+  .user-reg-sign-up a {
+    color: blue;
+  }
+  
+  .user-reg-sign-up a:hover {
+    font-weight: bold;
+  }
+  
+  .user-reg-sign-up a:visited {
+    color: blue;
+  }
+  
+  @media only screen and (max-width: 768px) {
+    .user-reg-image {
+      display: none;
+    }
+    
+    .user-reg-wrapper {
+      width: 350px;
+      height: auto;
+  
+      margin: 20px auto;
+    }
+  
+    .user-reg-email, .user-reg-password {
+      width: 300px;
+    }
+  
+    .user-reg-title {
+      width: 100%;
+      height: auto;
+
+      display: flex;
+      justify-content: space-around;
+    }
+  
+    .user-reg-title h1 {
+      font-size: 25px;
+      padding: 0;
+      margin: 0;
+    }
+  
+    .user-reg-logo {
+      width: 40%;
+    }
+  
+    .user-reg-content form {
+      width: 300px;
+    }
+  
+    .user-reg-sign-up {
+      font-size: 15px;
+    }
+  
+    .user-reg-email i, .user-reg-password i {
+      padding-left: 5px;
+    }
+  
+    .user-reg-email input, .user-reg-password input {
+      width: 200px;
+    }
+  
+    .user-reg-remember {
+      display: flex;
+    }
+
+    .user-reg-file {
+      width: 100%;
+      font-size: 15px;
+    }
+
+    .user-reg-password input {
+      width: 185px !important;
+    }
+
+    .user-reg-file input {
+      font-size: 12px;
+      width: 100% !important;
+      padding: 10px 15px;
+    }
+
+    ::-webkit-file-upload-button {
+      width: 30%;
+      height: 40px;
+    }
+}

@@ -5,7 +5,7 @@ const {upload} = require('../multer.js');
 const Shop = require("../model/Shop.js");
 const Event = require("../model/Event.js");
 const ErrorHandler = require("../utils/ErrorHandler.js");
-const {isSeller} = require("../middleware/auth.js");
+const {isSeller,isAdmin,isAuthenticated} = require("../middleware/auth.js");
 const catchAsyncErrors = require("../middleware/catchAsyncErrors.js");
 
 router.post("/create-event", upload.array("images"), catchAsyncErrors(async (req,res,next) => {
@@ -66,7 +66,7 @@ router.get("/get-all-events/:id", async (req,res,next) => {
     })
 });
 
-router.delete("/delete-shop-event/:id",isSeller,catchAsyncErrors(async (req, res, next) => {
+router.delete("/delete-shop-event/:id",catchAsyncErrors(async (req, res, next) => {
     try {
         const productId = req.params.id;
 
@@ -75,7 +75,7 @@ router.delete("/delete-shop-event/:id",isSeller,catchAsyncErrors(async (req, res
         eventData.images.forEach((imageUrl) => {
             const filename = imageUrl;
             const filePath = `uploads/${filename}`;
-  
+
             fs.unlink(filePath, (err) => {
                 if (err) {
                     console.log(err);
@@ -95,6 +95,19 @@ router.delete("/delete-shop-event/:id",isSeller,catchAsyncErrors(async (req, res
         });
     } catch (error) {
         return next(new ErrorHandler(error, 400));
+    }
+}));
+
+router.get('/admin-all-events', isAuthenticated, isAdmin('Admin'), catchAsyncErrors(async (req,res,next) => {
+    try {
+        const events = await Event.find().sort({createdAt: -1});
+
+        res.status(201).json({
+            success: true,
+            events
+        })
+    } catch (error) {
+        return next(new ErrorHandler(error.message, 500));
     }
 }));
 

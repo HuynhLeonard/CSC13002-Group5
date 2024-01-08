@@ -16,6 +16,8 @@ router.post("/create-coupoun-code", isSeller, catchAsyncErrors(async (req,res,ne
             return next(new ErrorHandler("Coupoun code already exists!", 400));
         }
 
+        console.log(req.body);
+
         const coupounCode = await CoupounCode.create(req.body);
 
         res.status(201).json({
@@ -56,5 +58,19 @@ router.delete("/delete-coupoun/:id", isSeller, catchAsyncErrors(async (req,res,n
         return next(new ErrorHandler(error, 400));
     }
 }));
+
+// get coupoun by name
+router.get("/get-coupoun-value/:names", catchAsyncErrors(async (req,res,next) => {
+    try {
+        const coupounCode = await CoupounCode.findOne({name: req.params.names});
+
+        res.status(200).json({
+            success: true,
+            coupounCode
+        })
+    } catch (error) {
+        return next(new ErrorHandler(error, 400));
+    }
+}))
 
 module.exports = router;

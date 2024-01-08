@@ -12,8 +12,10 @@ import OrderSuccessPage from "../pages/OrderSuccessPage";
 import ProductDetailsPage from "../pages/ProductDetailsPage";
 import ProfilePage from "../pages/ProfilePage";
 import ShopCreatePage from "../pages/ShopCreatePage";
-import SellerActiationPage from "../pages/SellerActivationPage";
+import SellerActivationPage from "../pages/SellerActivationPage";
 import ShopLoginPage from "../pages/ShopLoginPage";
+import OrderDetailsPage from "../pages/OrderDetailsPage";
+import TrackOrderPage from "../pages/TrackOrderPage";
 
 export {
     LoginPage, 
@@ -30,6 +32,8 @@ export {
     ProductDetailsPage,
     ProfilePage,
     ShopCreatePage,
-    SellerActiationPage,
-    ShopLoginPage
+    SellerActivationPage,
+    ShopLoginPage,
+    OrderDetailsPage,
+    TrackOrderPage,
 };
