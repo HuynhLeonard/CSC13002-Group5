@@ -148,7 +148,7 @@ const App = () => {
           }
         />
         <Route
-          path="/settings"
+          path="/dashboard-settings"
           element={
             <SellerProtectedRoute>
               <ShopSettingsPage />
