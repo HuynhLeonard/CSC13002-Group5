@@ -5,6 +5,7 @@ const catchAsyncErrors = require("../middleware/catchAsyncErrors.js");
 const { isAuthenticated, isSeller, isAdmin } = require("../middleware/auth.js");
 const Order = require("../model/Order.js");
 const Product = require("../model/Product.js");
+const Shop = require('../model/Shop.js');
 
 // create new order
 router.post(
